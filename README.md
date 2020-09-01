@@ -1,24 +1,15 @@
-# README
+# Members Only
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a clubhouse
+  where members can
+  write posts about non-members.
+Non-members will be able to
+  see member's posts,
+  but they will not be able to
+  see the author.
+Members can see
+  the author, however.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The full task description
+  can be found
+  [here](https://github.com/TheOdinProject/curriculum/blob/3e4a54cdff01038b21dd0e8b66908d50d39f226a/rails_programming/forms_and_authentication/project_auth.md).
