@@ -3,18 +3,26 @@ module SessionsHelper
 
   def sign_in(user)
     user.remember
-    cookies.permanent[:user_id] = user.id
+    session[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
 
   def current_user
-    @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
+    @current_user ||=
+      if session[:user_id]
+        User.find(session[:user_id])
+      elsif cookies[:remember_token]
+        User.find_by(
+          remember_digest: Digest::SHA1.hexdigest(cookies[:remember_token])
+        )
+      end
   end
 
   def sign_out
     current_user&.update_attribute(:remember_digest, nil)
     self.current_user = nil
-    cookies.delete(:user_id)
+
+    reset_session
     cookies.delete(:remember_token)
   end
 end

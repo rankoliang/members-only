@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :remember_digest
+  attr_accessor :remember_token
 
   before_create :create_remember_token
   validates :name, presence: true
@@ -13,6 +13,6 @@ class User < ApplicationRecord
 
   def remember
     create_remember_token
-    update_attribute(:remember_digest, remember_digest)
+    update_attributes(remember_digest: remember_digest)
   end
 end

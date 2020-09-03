@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    redirect_to current_user if current_user
+  end
 
   def create
     @user = User.find_by_email(params[:session][:email])
@@ -13,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    render 'new'
+    redirect_to root_path
   end
 end
