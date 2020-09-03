@@ -25,4 +25,8 @@ module SessionsHelper
     reset_session
     cookies.delete(:remember_token)
   end
+
+  def authenticate
+    redirect_to login_path unless current_user
+  end
 end

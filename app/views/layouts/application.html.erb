@@ -11,8 +11,10 @@
 
   <body>
     <%= yield %>
+    <br>
     <% if current_user %>
       <%= link_to current_user.name, current_user %>
+      <%= link_to 'Make a new post', new_post_path %>
       <%= link_to 'Log out', logout_path, method: :delete %>
     <% elsif !(controller_name == 'sessions' && action_name == 'new') %>
       <%= link_to 'Log in', login_path %>
